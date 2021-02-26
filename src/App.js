@@ -18,10 +18,12 @@ function App() {
   function handleReset() {
     // console.log('Resettt');
     // console.log('Counters' + counters);
-    let reset = counters.map(c => {
+    counters.map(c => {
         c.value = 0;
         return c;
     });
+
+    console.log(counters); 
 
     setCounters([ { id: 1, value: 0},
       { id: 2, value: 0},
