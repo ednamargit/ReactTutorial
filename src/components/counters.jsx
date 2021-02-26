@@ -14,6 +14,7 @@ class Counters extends React.Component {
         return (
           <div>
             <button onClick={this.props.onReset} className="btn btn-primary btn-sm m-2">Reset</button>
+            {/* {console.log(this.props.counters)} */}
             {this.props.counters.map((counter) => (
               <Counter
                 key={counter.id}
