@@ -13,45 +13,36 @@ function App() {
     { id: 4, value: 0}
   ]); 
   
-  // console.log(counters);
-  
   function handleReset() {
-    // console.log('Resettt');
-    // console.log('Counters' + counters);
     counters.map(c => {
         c.value = 0;
         return c;
     });
 
-    console.log(counters); 
+    setCounters([ ...counters ]);
 
-    setCounters([ { id: 1, value: 0},
-      { id: 2, value: 0},
-      { id: 3, value: 0},
-      { id: 4, value: 0} ]);
-    
+    // setCounters(
+    //   counters.map(c => {
+    //     c.value = 0;
+    //     return c;
+    //   })
+    // )
   };
 
-  function handleIncrement (counter) {
-    console.log('Increment'); 
-    //we have to create a new object and use the spread operator to clone it
 
-    // setCounters({...counters})
-    // const counters = [...counters]; 
-    // const index = counters.indexOf(counter); 
-    // counters[index] = {...counter};
-    // counters[index].value++;
+  function handleIncrement (counter) {
+    //we have to create a new object and use the spread operator to clone it
+    const index = counters.indexOf(counter); 
+    counters[index].value++;
+    setCounters([...counters]);
   }
 
   function handleDelete (counterId) {
-    console.log('Delete');
-    // const counters = counters.filter(c => c.id !== counterId);
+    
     // //If the key and value are the same, we can simplify the code with just one name
-    // // this.setState( {counters: counters} );
-    // setCounters( { counters } );
-    console.log(counters);
-    setCounters([{counters: counters.filter(c=>c.id !== counterId)}]);
-}; 
+    // const countDelete = counters.filter(c => c.id !== counterId); 
+    setCounters(counters.filter(c => c.id !== counterId)); 
+  }; 
 
 return (
     <React.Fragment>
