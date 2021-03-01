@@ -11,22 +11,34 @@ class Counter extends Component {
   render() {
     console.log(this.props);
     return (
-      <React.Fragment>
-        <h6>{this.props.counter.id}</h6>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button
-          //we can use an inline function
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => this.props.onDelete(this.props.counter.id)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
+      <React.Fragment className="row">
+        <div className="col-1">
+          <h6>{this.props.counter.id}</h6>
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div>  
+        <div className="col">
+          <button
+            //we can use an inline function
+            onClick={() => this.props.onIncrement(this.props.counter)}
+            className="btn btn-secondary btn-sm"
+          >
+            +
+          </button>
+          <button
+            //we can use an inline function
+            onClick={() => this.props.onDecrement(this.props.counter)}
+            className="btn btn-secondary btn-sm m-2"
+            disabled={this.props.counter.value === 0 ? 'disabled' : ''}
+          >
+            -
+          </button>
+          <button
+            onClick={() => this.props.onDelete(this.props.counter.id)}
+            className="btn btn-danger btn-sm"
+          >
+            Delete
+          </button>
+        </div>
       </React.Fragment>
     );
   }

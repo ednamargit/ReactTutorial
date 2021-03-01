@@ -21,6 +21,7 @@ function App() {
 
     setCounters([ ...counters ]);
 
+    //Solución Alternativa
     // setCounters(
     //   counters.map(c => {
     //     c.value = 0;
@@ -37,6 +38,13 @@ function App() {
     setCounters([...counters]);
   }
 
+  function handleDecrement (counter) {
+    //we have to create a new object and use the spread operator to clone it
+    const index = counters.indexOf(counter); 
+    counters[index].value--;
+    setCounters([...counters]);
+  }
+
   function handleDelete (counterId) {
     
     // //If the key and value are the same, we can simplify the code with just one name
@@ -46,12 +54,13 @@ function App() {
 
 return (
     <React.Fragment>
-      <NavBar />
+      <NavBar totalCounters ={counters.filter(c => c.value > 0).length}/>
       <main className="container">
         <Counters
           counters={counters}
           onReset={handleReset}
           onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
           onDelete={handleDelete}
         />
       </main>
